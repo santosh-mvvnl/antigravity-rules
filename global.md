@@ -68,8 +68,9 @@ Whenever a summary or dashboard is generated from source data, analyze the sourc
 - **Top Search Box (Excel AutoFilter Style):** Position a dedicated search text input box permanently at the very top of each filter popover/dropdown, enabling instantaneous real-time filtering across long option lists.
 - **`(Select All Search Results)` Checkbox:** When text is entered in the search box, dynamically present a `(Select All Search Results)` master checkbox displaying the count of matching items to select or deselect all search matches in a single click.
 - **`Add current selection to filter` Checkbox:** When searching, provide an `Add current selection to filter` checkbox:
-  - If checked (default): Toggling search results adds to or modifies active selections without unchecking non-matching items outside the search.
-  - If unchecked: Selecting search results isolates them, replacing previous selections with only the searched items.
+  - If unchecked (default — matching Microsoft Excel AutoFilter standard): Selecting search results isolates them, replacing previous selections with only the searched items and immediately updating filter counts to strictly the search results.
+  - If checked: Toggling search results adds to or modifies active selections without unchecking non-matching items outside the search.
+- **Dedicated Isolation & Bulk Controls:** Provide 1-click "Select Only Results" / "Select All" and "Clear All" controls within each dropdown to facilitate instantaneous selection isolation.
 - **`(Select All)` Checkbox When Search is Empty:** When the search input is empty, display a master `(Select All)` checkbox showing the total available items in scope, automatically checking when all items are selected and unchecking if any item is deselected.
 - **Bulk Selection Controls:** Provide convenient "Select All" and "Clear All" controls within each dropdown to facilitate rapid selection changes.
 - **Independent Filter State Isolation:** Bulk "Select All" and "Clear All" controls and search toggles within an individual dropdown must operate strictly and exclusively on that dropdown's options, and must never reset, clear, or invalidate selections made in any other filter. Global reset across all filters is exclusively reserved for the dedicated "Reset All Filters" action button.
