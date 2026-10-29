@@ -23,7 +23,7 @@ git clone https://github.com/santosh-mvvnl/antigravity-rules.git ~/.gemini/confi
 ---
 
 ### Option 2: Direct Single-File Download (Zero Git Dependency)
-If Git is not yet configured on the target machine, run this single PowerShell command to download `global.md`:
+If Git is not configured or you prefer a direct file download without repository tracking, run this single PowerShell command:
 
 ```powershell
 New-Item -ItemType Directory -Path "$HOME\.gemini\config\rules" -Force; Invoke-WebRequest -Uri "https://raw.githubusercontent.com/santosh-mvvnl/antigravity-rules/main/global.md" -OutFile "$HOME\.gemini\config\rules\global.md"
@@ -38,7 +38,7 @@ mkdir -p ~/.gemini/config/rules && curl -fsSL https://raw.githubusercontent.com/
 
 ## 🔄 How to Pull the Latest Rules on Any Machine
 
-Whenever you make updates to `global.md` in this GitHub repository:
+Whenever you update `global.md` in this GitHub repository, update any machine with:
 
 ```powershell
 cd "$HOME\.gemini\config\rules"
@@ -62,7 +62,7 @@ antigravity-rules/
 1. **Mandatory Confirmation Before Codebase Changes:**  
    The agent must ask for explicit user confirmation before creating, modifying, or deleting any file in the codebase.
 2. **Automatic Git Add, Commit & Push:**  
-   Immediately stages (`git add -A`), commits with descriptive message, and pushes to remote whenever changes are applied.
+   Immediately stages (`git add -A`), commits with a concise descriptive message, and pushes to remote whenever changes are applied.
 3. **Mandatory 6-Section Structured Responses:**  
    Every response addressing user prompts or implementations must output:
    1. *Assumptions Made*
@@ -73,17 +73,19 @@ antigravity-rules/
    6. *Important Instructions for the User*
 4. **Strict Zero Synthetic Data Policy (Pure Authentic Portal Data):**  
    Zero tolerance for mock, synthetic, fake, or formula-generated data across all layers, controllers, scrapers, and dashboards. 100% summary-to-list count parity must be preserved from authoritative source reports.
+5. **Automatic Synchronization of Global Rules to `antigravity-rules` GitHub Repository:**  
+   Whenever any rule is created, updated, or removed in `global.md`, it is immediately synchronized to the central GitHub repository (`https://github.com/santosh-mvvnl/antigravity-rules.git`) along with an updated `README.md`.
 
 ### Part 2: Global Development & Data Standards
-5. **Summary Hyperlinks and Strict 1:1 Data Parity:**  
+6. **Summary Hyperlinks and Strict 1:1 Data Parity:**  
    Every numerical summary cell or KPI count must be clickable, downloading strictly that exact subset of records with 1:1 row count parity (excluding header).
-6. **Contextual Dropdown Filters Above Summaries:**  
+7. **Contextual Dropdown Filters Above Summaries:**  
    Dynamic, schema-discovered cascading dropdowns with `All` options placed prominently above every summary.
-7. **Indian Number Formatting:**  
+8. **Indian Number Formatting:**  
    Standard `en-IN` comma grouping (`1,00,000`, `1,00,00,000`) across all user-facing displays without converting underlying numeric types.
-8. **Avoid Hard-Coding & Build Generalized, Configurable Solutions:**  
+9. **Avoid Hard-Coding & Build Generalized, Configurable Solutions:**  
    Modular, configuration-driven code with externalized settings and parameterized queries.
-9. **Validation, Testing, and Regression Prevention:**  
-   Mandatory 8-point checklist verifying count parity, filter consistency, boundary cases, and automated regression tests.
-10. **Mandatory Working Procedure & Scope/Priority:**  
+10. **Validation, Testing, and Regression Prevention:**  
+    Mandatory 8-point checklist verifying count parity, filter consistency, boundary cases, and automated regression tests.
+11. **Mandatory Working Procedure & Scope/Priority:**  
     Formal pre-modification inspection and post-implementation validation workflow across all projects.

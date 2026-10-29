@@ -37,11 +37,18 @@ In every response addressing user prompts, issues, or implementation tasks, **al
 - When an individual data field, attribute, or subsection is genuinely absent or not published on the actual source portal, the system must strictly render `"-"`, empty lists, or clean informative notices ("Not Available on Portal") rather than fabricating placeholder records.
 - 100% summary-to-list count parity must always be preserved through authentic source aggregation and verified upstream reconciliation.
 
+### 5. Automatic Synchronization of Global Rules to `antigravity-rules` GitHub Repository
+- Whenever any rule is created, updated, or removed in `global.md`:
+  1. Immediately apply the modification to the local configuration (`~/.gemini/config/rules/global.md`) and the active project workspace (`.gemini/rules/global.md`).
+  2. Synchronize the updated `global.md` to the central GitHub repository (`https://github.com/santosh-mvvnl/antigravity-rules.git`).
+  3. Update the repository `README.md` to reflect the latest rule additions, descriptions, and summary checklists.
+  4. Immediately execute the Git workflow (`git add -A`, `git commit -m "docs: Update global rules and README"`, `git push origin main`) to ensure all machines cloning or pulling from the repository stay synchronized.
+
 ---
 
 ## Part 2: Global Development & Data Standards
 
-### 5. Summary Hyperlinks and Strict 1:1 Data Parity
+### 6. Summary Hyperlinks and Strict 1:1 Data Parity
 Whenever a summary, dashboard, KPI card, aggregate table, or analytical report displays a numerical value representing a count of consumers, applications, accounts, records, or other entities:
 - Make every displayed summary value clickable and link it to the corresponding detailed record list.
 - Clicking a summary value must open or download the exact set of source records contributing to that value, with all applicable filters preserved.
@@ -54,7 +61,7 @@ Whenever a summary, dashboard, KPI card, aggregate table, or analytical report d
 - Validate count parity programmatically before presenting or downloading the results. If validation fails, identify and log the discrepancy instead of silently presenting inconsistent data.
 - **Mandatory acceptance criterion:** Every clickable summary count must reconcile exactly with the number of qualifying data rows in its corresponding downloaded file.
 
-### 6. Contextual Dropdown Filters Above Summaries
+### 7. Contextual Dropdown Filters Above Summaries
 Whenever a summary or dashboard is generated from source data, analyze the source schema and provide relevant dropdown filters above the summary.
 - Identify important columns that can meaningfully filter the summary, such as DISCOM, division, subdivision, circle, consumer category, application status, connection type, date range, vendor, scheme, or other relevant business dimensions.
 - Select filters dynamically according to the source data and the purpose of the report. Do not add irrelevant filters merely to satisfy this rule.
@@ -67,9 +74,9 @@ Whenever a summary or dashboard is generated from source data, analyze the sourc
 - Where appropriate, update dependent dropdown options based on preceding selections.
 - **Mandatory acceptance criterion:** The summary, its clickable details, and its downloaded file must always reflect the same active filter selections.
 
-### 7. Indian Number Formatting
+### 8. Indian Number Formatting
 Use the Indian numbering system for displaying all numerical values throughout the application, including summaries, KPI cards, tables, charts, tooltips, reports, downloadable presentation summaries, and other user-facing outputs.
-- Use Indian comma grouping for whole numbers: `1,000`, `10,000`, `1,00,000`, `10,00,000`, and `1,00,00,000`.
+- Use Indian comma grouping for whole numbers: `1,000`, `10,000`, `1,00,000`, `10,00,000`, and `1,00,000,000`.
 - Apply the same convention consistently to currency amounts, consumer counts, application counts, energy values, and other applicable numerical quantities.
 - Use the appropriate precision and decimal places for the data type.
 - Keep the underlying numeric values unchanged. Formatting must not convert numbers into strings in a way that breaks calculations, sorting, filtering, aggregation, or exports.
@@ -77,7 +84,7 @@ Use the Indian numbering system for displaying all numerical values throughout t
 - Use locale-aware formatting, such as `en-IN` where supported by the technology stack.
 - **Mandatory acceptance criterion:** Every user-facing numerical display follows Indian comma grouping consistently, without affecting calculations or data integrity.
 
-### 8. Avoid Hard-Coding and Build Generalized, Configurable Solutions
+### 9. Avoid Hard-Coding and Build Generalized, Configurable Solutions
 Avoid hard-coding business rules, data values, filters, labels, status mappings, column names, file paths, API endpoints, database connection details, thresholds, or project-specific assumptions directly into application logic.
 - Build reusable, modular, configuration-driven code that can accommodate future changes with minimal code modifications.
 - Keep business rules, status mappings, configurable thresholds, display labels, column mappings, and other changeable settings in appropriate configuration files, environment variables, database tables, or administrative settings.
@@ -91,7 +98,7 @@ Avoid hard-coding business rules, data values, filters, labels, status mappings,
 - Do not over-engineer. Generalization must improve maintainability, reliability, and change accommodation without compromising readability or performance.
 - **Mandatory acceptance criterion:** A reasonable change in business rules, source columns, categories, thresholds, or configuration should not require rewriting multiple unrelated code modules.
 
-### 9. Validation, Testing, and Regression Prevention
+### 10. Validation, Testing, and Regression Prevention
 Apply the following checks whenever implementing or modifying a summary, dashboard, report, filter, or data-processing module:
 1. Verify that summary aggregation is consistent with the source data.
 2. Verify exact count parity between every clickable summary count and its corresponding detail file.
@@ -102,7 +109,7 @@ Apply the following checks whenever implementing or modifying a summary, dashboa
 7. Log validation failures with sufficient diagnostic information to support troubleshooting.
 8. Add or update automated tests for important business rules and data reconciliation logic.
 
-### 10. Mandatory Working Procedure & Scope/Priority
+### 11. Mandatory Working Procedure & Scope/Priority
 Before modifying any project:
 - Inspect the existing project structure, `global.md`, relevant source code, data schema, existing configurations, and current business logic.
 - Reuse existing architecture and utilities where suitable.
