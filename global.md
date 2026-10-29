@@ -63,9 +63,10 @@ Whenever a summary, dashboard, KPI card, aggregate table, or analytical report d
 
 ### 7. Contextual Dropdown Filters with Checkboxes Above Summaries
 Whenever a summary or dashboard is generated from source data, analyze the source schema and provide relevant multi-select dropdown filters with checkboxes above the summary.
-- **Checkbox-Based Multi-Selection:** Implement dropdown filters equipped with checkboxes (e.g. multi-select dropdowns with checkboxes) enabling users to select, check, or uncheck one, multiple, or all options simultaneously.
+- **Adjacent Checkboxes:** Display individual checkboxes positioned immediately adjacent to each option in the dropdown list, allowing users to explicitly select or unselect individual items.
+- **Default State — All Checked:** Default to all options checked (`value=True`) so the complete dataset is presented initially upon loading, with instant capabilities to select all, clear all, or toggle individual items.
+- **Bulk Selection Controls:** Provide convenient "Select All" and "Clear All" controls within each dropdown to facilitate rapid selection changes.
 - **Dynamic & Distinct Options:** Populate dropdown checkbox options dynamically from actual available source data, using distinct, valid values.
-- **Default State & "Select All":** Default to all options selected (or an explicit "Select All" / "All" state) so the complete dataset is presented initially upon loading.
 - **Contextual Discovery:** Identify important business dimensions that meaningfully segment the summary, such as DISCOM, zone, circle, division, subdivision, consumer category, supply type, application status, connection status, date range, vendor, or scheme.
 - **Cascading Dependencies:** Where appropriate, dynamically update dependent downstream checkbox options based on upstream checkbox selections (e.g. checking specific DISCOMs filters the available zones and divisions in subsequent dropdowns).
 - **Consistent Filter Propagation:** Apply the set of checked values consistently across summaries, charts, KPI cards, detailed record lists, and downloaded CSV/Excel files.
