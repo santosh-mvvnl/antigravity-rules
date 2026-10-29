@@ -61,19 +61,26 @@ Whenever a summary, dashboard, KPI card, aggregate table, or analytical report d
 - Validate count parity programmatically before presenting or downloading the results. If validation fails, identify and log the discrepancy instead of silently presenting inconsistent data.
 - **Mandatory acceptance criterion:** Every clickable summary count must reconcile exactly with the number of qualifying data rows in its corresponding downloaded file.
 
-### 7. Contextual Dropdown Filters with Checkboxes Above Summaries
+### 7. Contextual Dropdown Filters with Checkboxes Above Summaries (Excel AutoFilter Semantics)
 Whenever a summary or dashboard is generated from source data, analyze the source schema and provide relevant multi-select dropdown filters with checkboxes above the summary.
 - **Adjacent Checkboxes:** Display individual checkboxes positioned immediately adjacent to each option in the dropdown list, allowing users to explicitly select or unselect individual items.
 - **Default State — All Checked:** Default to all options checked (`value=True`) so the complete dataset is presented initially upon loading, with instant capabilities to select all, clear all, or toggle individual items.
+- **Top Search Box (Excel AutoFilter Style):** Position a dedicated search text input box permanently at the very top of each filter popover/dropdown, enabling instantaneous real-time filtering across long option lists.
+- **`(Select All Search Results)` Checkbox:** When text is entered in the search box, dynamically present a `(Select All Search Results)` master checkbox displaying the count of matching items to select or deselect all search matches in a single click.
+- **`Add current selection to filter` Checkbox:** When searching, provide an `Add current selection to filter` checkbox:
+  - If checked (default): Toggling search results adds to or modifies active selections without unchecking non-matching items outside the search.
+  - If unchecked: Selecting search results isolates them, replacing previous selections with only the searched items.
+- **`(Select All)` Checkbox When Search is Empty:** When the search input is empty, display a master `(Select All)` checkbox showing the total available items in scope, automatically checking when all items are selected and unchecking if any item is deselected.
 - **Bulk Selection Controls:** Provide convenient "Select All" and "Clear All" controls within each dropdown to facilitate rapid selection changes.
-- **Independent Filter State Isolation:** Bulk "Select All" and "Clear All" controls within an individual dropdown must operate strictly and exclusively on that dropdown's options, and must never reset, clear, or invalidate selections made in any other filter. Global reset across all filters is exclusively reserved for the dedicated "Reset All Filters" action button.
+- **Independent Filter State Isolation:** Bulk "Select All" and "Clear All" controls and search toggles within an individual dropdown must operate strictly and exclusively on that dropdown's options, and must never reset, clear, or invalidate selections made in any other filter. Global reset across all filters is exclusively reserved for the dedicated "Reset All Filters" action button.
+- **Persistent User Choice Memory:** Retain checked/unchecked user choices across upstream filter toggles and search queries without losing state.
 - **Dynamic & Distinct Options:** Populate dropdown checkbox options dynamically from actual available source data, using distinct, valid values.
 - **Contextual Discovery:** Identify important business dimensions that meaningfully segment the summary, such as DISCOM, zone, circle, division, subdivision, consumer category, supply type, application status, connection status, date range, vendor, or scheme.
 - **Cascading Dependencies:** Where appropriate, dynamically update dependent downstream checkbox options based on upstream checkbox selections (e.g. checking specific DISCOMs filters the available zones and divisions in subsequent dropdowns).
 - **Consistent Filter Propagation:** Apply the set of checked values consistently across summaries, charts, KPI cards, detailed record lists, and downloaded CSV/Excel files.
 - **Retention on Click:** Ensure that clicking any summary value retains the active combination of checked filters and opens/downloads only the records matching those checked criteria.
 - **Safe Value Handling:** Safely handle null, blank, duplicate, and unexpected source values without throwing errors.
-- **Mandatory acceptance criterion:** The summary, its clickable details, and its downloaded file must always reflect the exact set of active checkbox selections made in the dropdown filters.
+- **Mandatory acceptance criterion:** The summary, its clickable details, and its downloaded file must always reflect the exact set of active checkbox selections made in the dropdown filters, supporting full Excel-style search-and-select ergonomics.
 
 ### 8. Indian Number Formatting
 Use the Indian numbering system for displaying all numerical values throughout the application, including summaries, KPI cards, tables, charts, tooltips, reports, downloadable presentation summaries, and other user-facing outputs.
