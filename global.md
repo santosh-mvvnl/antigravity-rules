@@ -61,18 +61,17 @@ Whenever a summary, dashboard, KPI card, aggregate table, or analytical report d
 - Validate count parity programmatically before presenting or downloading the results. If validation fails, identify and log the discrepancy instead of silently presenting inconsistent data.
 - **Mandatory acceptance criterion:** Every clickable summary count must reconcile exactly with the number of qualifying data rows in its corresponding downloaded file.
 
-### 7. Contextual Dropdown Filters Above Summaries
-Whenever a summary or dashboard is generated from source data, analyze the source schema and provide relevant dropdown filters above the summary.
-- Identify important columns that can meaningfully filter the summary, such as DISCOM, division, subdivision, circle, consumer category, application status, connection type, date range, vendor, scheme, or other relevant business dimensions.
-- Select filters dynamically according to the source data and the purpose of the report. Do not add irrelevant filters merely to satisfy this rule.
-- Populate dropdown options from the actual available source data, preferably using distinct, valid values.
-- Include an `All` or equivalent option wherever appropriate.
-- Apply the selected filters consistently to the summary values, charts, KPI cards, detailed record lists, and downloaded Excel/CSV files.
-- Ensure that clicking a summary value retains the currently selected filters and opens only the records matching those filters.
-- Support combined filtering across multiple dropdowns.
-- Handle null, blank, duplicate, and unexpected source values safely.
-- Where appropriate, update dependent dropdown options based on preceding selections.
-- **Mandatory acceptance criterion:** The summary, its clickable details, and its downloaded file must always reflect the same active filter selections.
+### 7. Contextual Dropdown Filters with Checkboxes Above Summaries
+Whenever a summary or dashboard is generated from source data, analyze the source schema and provide relevant multi-select dropdown filters with checkboxes above the summary.
+- **Checkbox-Based Multi-Selection:** Implement dropdown filters equipped with checkboxes (e.g. multi-select dropdowns with checkboxes) enabling users to select, check, or uncheck one, multiple, or all options simultaneously.
+- **Dynamic & Distinct Options:** Populate dropdown checkbox options dynamically from actual available source data, using distinct, valid values.
+- **Default State & "Select All":** Default to all options selected (or an explicit "Select All" / "All" state) so the complete dataset is presented initially upon loading.
+- **Contextual Discovery:** Identify important business dimensions that meaningfully segment the summary, such as DISCOM, zone, circle, division, subdivision, consumer category, supply type, application status, connection status, date range, vendor, or scheme.
+- **Cascading Dependencies:** Where appropriate, dynamically update dependent downstream checkbox options based on upstream checkbox selections (e.g. checking specific DISCOMs filters the available zones and divisions in subsequent dropdowns).
+- **Consistent Filter Propagation:** Apply the set of checked values consistently across summaries, charts, KPI cards, detailed record lists, and downloaded CSV/Excel files.
+- **Retention on Click:** Ensure that clicking any summary value retains the active combination of checked filters and opens/downloads only the records matching those checked criteria.
+- **Safe Value Handling:** Safely handle null, blank, duplicate, and unexpected source values without throwing errors.
+- **Mandatory acceptance criterion:** The summary, its clickable details, and its downloaded file must always reflect the exact set of active checkbox selections made in the dropdown filters.
 
 ### 8. Indian Number Formatting
 Use the Indian numbering system for displaying all numerical values throughout the application, including summaries, KPI cards, tables, charts, tooltips, reports, downloadable presentation summaries, and other user-facing outputs.

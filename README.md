@@ -79,8 +79,8 @@ antigravity-rules/
 ### Part 2: Global Development & Data Standards
 6. **Summary Hyperlinks and Strict 1:1 Data Parity:**  
    Every numerical summary cell or KPI count must be clickable, downloading strictly that exact subset of records with 1:1 row count parity (excluding header).
-7. **Contextual Dropdown Filters Above Summaries:**  
-   Dynamic, schema-discovered cascading dropdowns with `All` options placed prominently above every summary.
+7. **Contextual Dropdown Filters with Checkboxes Above Summaries:**  
+   Dynamic multi-select dropdown filters equipped with checkboxes allowing users to select, check, or uncheck any combination of options with 'Select All' defaults placed prominently above summaries.
 8. **Indian Number Formatting:**  
    Standard `en-IN` comma grouping (`1,00,000`, `1,00,00,000`) across all user-facing displays without converting underlying numeric types.
 9. **Avoid Hard-Coding & Build Generalized, Configurable Solutions:**  
