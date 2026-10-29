@@ -136,6 +136,20 @@ After implementation:
 - Confirm that filters and exports behave consistently.
 - Report the files modified, the rules implemented, the tests performed, and any unresolved issues.
 
+### 12. High-Performance Omnidirectional Cascading Filters on Large Datasets
+Implement omnidirectional cascading filters without compromising performance on large datasets.
+- **Filter Architecture Inspection:** Inspect the existing filter architecture and identify every operation that scans records, recalculates distinct values, updates counts, or re-renders the table after a filter change.
+- **Preserve Omnidirectional Cascading Behavior:** Changing any filter must update the available options in the other filters according to the active filter criteria. Do not break the existing filter-selection, search, checkbox, or Excel-style AutoFilter behavior.
+- **Server-Side Filtering for Large Datasets:** Use server-side filtering for large datasets. Do not repeatedly transfer or scan the entire dataset in the browser. Use parameterized database queries, appropriate indexes, pagination, and query-plan analysis.
+- **Independent Exclusion Recalculation:** Recalculate only the filter options and counts that need updating. For each filter's available options, apply the active filters on the other columns while excluding that filter's own selection criteria, unless the existing business logic explicitly requires otherwise.
+- **Search Debouncing & Immediate Enter:** Debounce free-text search, execute searches immediately on Enter, avoid duplicate requests, and cancel or ignore stale responses when users change filters rapidly.
+- **Caching & Cache Invalidation:** Cache reusable distinct-value lists and count results where beneficial. Define cache invalidation rules so that updated records cannot cause stale filter options or incorrect counts.
+- **State Separation & Synchronization:** Keep the search query, pending checkbox selection, applied filter criteria, available options, and displayed data as separate, synchronized states.
+- **Strict Data & Export Parity:** Ensure that table rows, summary counts, pagination totals, hyperlinks, and exported files use consistent filter criteria and do not introduce duplicate or missing records.
+- **Scalability Benchmarking:** Benchmark the existing and optimized implementation using realistic datasets of 10,000, 100,000, 500,000, and 1,000,000 records where feasible. Measure filter response time, database query duration, number of requests, memory usage, and browser rendering time.
+- **Root-Cause Bottleneck Resolution:** Fix the actual performance bottlenecks instead of disabling omnidirectional cascading or changing the expected filtering behavior. Report the measured results and any remaining limitations.
+- **Mandatory acceptance criterion:** Filters maintain sub-second responsiveness with full omnidirectional cascading, strict 1:1 count parity, and zero degradation as dataset volumes scale.
+
 Scope and Priority:
 These standards are global and apply across all projects unless a project-specific requirement explicitly conflicts with a rule. Where a conflict exists, identify it and document the exception rather than silently ignoring the global standard.
 Update `global.md` as the persistent source of these standards, and apply them to subsequent development work. Inspect existing projects for violations when they are next modified; do not claim that all existing projects have been updated or validated unless that work has actually been completed.

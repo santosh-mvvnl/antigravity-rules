@@ -89,3 +89,5 @@ antigravity-rules/
     Mandatory 8-point checklist verifying count parity, filter consistency, boundary cases, and automated regression tests.
 11. **Mandatory Working Procedure & Scope/Priority:**  
     Formal pre-modification inspection and post-implementation validation workflow across all projects.
+12. **High-Performance Omnidirectional Cascading Filters on Large Datasets:**  
+    Implement omnidirectional cascading filters without compromising performance on large datasets. Mandates filter architecture inspection, preserving Excel AutoFilter behaviors, server-side filtering and parameterized indexing for large datasets, independent exclusion recalculation, search debouncing, structured caching with invalidation rules, state separation & synchronization, strict 1:1 count/export parity, benchmarking on realistic scale datasets (10k to 1M records), and fixing root-cause bottlenecks.
